@@ -1,10 +1,9 @@
 package be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.controller;
 
-import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.dto.AlbumDto;
+
 import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.dto.ResponseDto;
 import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.dto.ResponseDtoStatus;
 import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.dto.TrackDto;
-import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.exceptions.InvalidCreateParametersException;
 import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.persistence.ApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -28,11 +27,11 @@ public class TrackController {
         try {
             List<TrackDto> listTrackDtos = repository.findAllByAlbumName(name);
             if (listTrackDtos != null) {
-                responseDto = new ResponseDto<List<TrackDto>>(ResponseDtoStatus.SUCCESS, listTrackDtos.size() + " tracks found");
+                responseDto = new ResponseDto<>(ResponseDtoStatus.SUCCESS, listTrackDtos.size() + " tracks found");
                 responseDto.setPayload(listTrackDtos);
             }
         } catch (Exception e) {
-            responseDto = new ResponseDto<List<TrackDto>>(ResponseDtoStatus.FAILURE, "unexpected exception");
+            responseDto = new ResponseDto<>(ResponseDtoStatus.FAILURE, "unexpected exception");
             e.printStackTrace();
         }
         return ResponseEntity.ok(responseDto);

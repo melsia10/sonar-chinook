@@ -28,7 +28,7 @@ public class ApplicationRepository {
         return createListAlbumDtos(listAlbums);
     }
     public List<AlbumDto> createListAlbumDtos(List<AlbumEntity> listAlbumEntities) {
-		List<AlbumDto> listAlbumsDto= new ArrayList<AlbumDto>();
+		List<AlbumDto> listAlbumsDto= new ArrayList<>();
 		for (AlbumEntity albumEntity : listAlbumEntities) {
 			AlbumDto albumDto = createAlbumDto(albumEntity);
 			listAlbumsDto.add(albumDto);
@@ -51,7 +51,7 @@ public class ApplicationRepository {
 	}
 
 	private GenresDto[] createTabGenreDto(List<TrackEntity> listTrackEntities) {
-		List<GenresDto> listGenresDtos = new ArrayList<GenresDto>();
+		List<GenresDto> listGenresDtos = new ArrayList<>();
 		for (TrackEntity trackEntity : listTrackEntities) {
 			GenresDto genresDto = new GenresDto();
 			genresDto.setName(trackEntity.getGenreEntity().getName());

@@ -7,6 +7,8 @@ import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.dt
 import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.exceptions.DuplicatedAlbumException;
 import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.exceptions.InvalidCreateParametersException;
 import be.afelio.softwareacademy.spring_boot.softwareacademyspringbootchinook.persistence.ApplicationRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "album")
 public class AlbumController {
+
+    public static final Logger logger = LoggerFactory.getLogger(AlbumController.class);
     final String albumFound = "albums found";
     final String unexpectedexception = "unexpected exception";
     @Autowired
@@ -34,7 +38,7 @@ public class AlbumController {
             }
         } catch (Exception e) {
             responseDto = new ResponseDto<>(ResponseDtoStatus.FAILURE, unexpectedexception);
-            e.printStackTrace();
+            logger.debug("Exception");
         }
         return ResponseEntity.ok(responseDto);
     }
@@ -51,7 +55,7 @@ public class AlbumController {
             }
         } catch (Exception e) {
             responseDto = new ResponseDto<>(ResponseDtoStatus.FAILURE, unexpectedexception);
-            e.printStackTrace();
+            logger.debug("Exception");
         }
         return ResponseEntity.ok(responseDto);
     }
@@ -68,7 +72,7 @@ public class AlbumController {
             }
         } catch (Exception e) {
             responseDto = new ResponseDto<>(ResponseDtoStatus.FAILURE, unexpectedexception);
-            e.printStackTrace();
+            logger.debug("Exception");
         }
         return ResponseEntity.ok(responseDto);
     }
